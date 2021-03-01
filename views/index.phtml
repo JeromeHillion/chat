@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>chat</title>
+    <link rel="stylesheet" href="./views/css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h1>Chat Box</span></h1>
+    <div class="tchatBox">
+       <!--Les messages ici-->
+
+        <div class="box">
+            <?php foreach($resultats as $resultat):
+            ?>
+
+            <p class="pseudo"><?= htmlspecialchars($resultat['pseudo']); ?></p><cite class="message"><?= htmlspecialchars($resultat['message']); ?></cite>
+
+
+        <?php endforeach; ?>
+
+        </div>
+    </div>
+<h2>Nouveau message</h2>
+    <form action="./index.php" method="post">
+
+        <label for="nickname"></label>
+        <input type="text" name="nickname" id="nickname" placeholder="Pseudonyme">
+
+        <label for="message"></label>
+        <input type="text" name="message" id="message" placeholder="Message">
+
+        <input type="submit" value="valider">
+
+    </form>
+</div>
+</body>
+</html>
