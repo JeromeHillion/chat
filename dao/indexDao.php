@@ -1,20 +1,15 @@
 <?php
 require './model/TchatBdd.php';
-function addMessage(){
+function addMessage($nickname, $message){
     $db = new TchatBdd();
 
     $chat_db = $db->dbConnexion();
-    if ($_POST){
-        $nickname = $_POST['nickname'];
-        $message = $_POST['message'];
-        $sql = $chat_db->prepare("INSERT INTO chat(pseudo, message) VALUES (?,?)");
 
+        $sql = $chat_db->prepare("INSERT INTO chat(pseudo, message) VALUES (?,?)");
         $sql->execute([$nickname, $message]);
         /*echo "Entrée ajoutée dans la table";*/
-        return $sql;
-    }
 
-
+    //return $sql;
 }
 
 function readMessage(){
@@ -33,9 +28,10 @@ function readMessage(){
     return $resultats = $sql->fetchAll(PDO::FETCH_ASSOC);
 }
 
-/*function deleteMessage(){
+function deleteMessage(){
 // Validation du paramètre id de la chaîne de requête
 //absence d'une clé id dans $_GET ou $_GET['id'] n'est pas numeric
+
     if( !array_key_exists('id', $_GET) OR !ctype_digit($_GET['id']) ) {
         header('Location: index.php');
         exit();
@@ -52,4 +48,4 @@ function readMessage(){
     header('Location: index.php');
     exit();
 
-}*/
+}

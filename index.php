@@ -1,7 +1,18 @@
 <?php
-require './controller/indexController.php';
+require './dao/indexDao.php';
+
+
+if ($_POST) {
+    $nickname = $_POST['nickname'];
+    $message = $_POST['message'];
+    addMessage($nickname,$message);
+}
+
+
+if ($_GET) {
+    return deleteMessage();
+}
 
 $tchatMessages = readMessage();
-/*$message = deleteMessage();*/
 
 require 'views/index.phtml';

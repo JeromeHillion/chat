@@ -3,41 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <title>chat</title>
-    <link rel="stylesheet" href="./public/css/style.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <link href="./public/css/style.css" rel="stylesheet">
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">Tchat</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
 
-<div class="container">
-    <h1>Chat Box</span></h1>
+            <span class="navbar-text">
+        Navbar text with an inline element
+      </span>
+        </div>
+    </div>
+</nav>
+<fieldset>
+    <h1 class="h3 mb-3 font-weight-normal" >Chat Box</span></h1>
     <div class="tchatBox">
        <!--Les messages ici-->
 
-        <div class="box">
+        <div id="conversation">
             <?php foreach($tchatMessages as $tchatMessage):
             ?>
 
-            <p class="pseudo"><?= htmlspecialchars($tchatMessage['pseudo']).' '. htmlspecialchars($tchatMessage['dateConv']); ?>
-                <a href="./index.php?id=<?=$tchatMessage['id'];?>">x</a></p><cite class="message"><?= htmlspecialchars($tchatMessage['message']); ?></cite>
+                <span class="badge bg-primary m"><?= htmlspecialchars($tchatMessage['pseudo'])?></span> <span><?=  htmlspecialchars($tchatMessage['dateConv']); ?><a href="./index.php?id=<?= $tchatMessage['id'];?>" class="badge bg-danger float-end">x</a> </span>
+            <p><?= htmlspecialchars($tchatMessage['message']); ?></p>
+
+
 
 
         <?php endforeach; ?>
 
         </div>
     </div>
-<h2>Nouveau message</h2>
-    <form action="./index.php" method="post">
-
-        <label for="nickname"></label>
-        <input type="text" name="nickname" id="nickname" placeholder="Pseudonyme">
-
-        <label for="message"></label>
-        <input type="text" name="message" id="message" placeholder="Message">
-
-        <input type="submit" value="valider">
-
-    </form>
-</div>
+    <div class="input-group">
+        <form id="chatform" action="./index.php" method="post">
+            <div class="input-group">
+                <input type="text" id="nickname" name="nickname" placeholder="pseudo" class="form-control" required>
+                <input type="text" id="message" name="message" placeholder="message" class="form-control" required>
+                <div class="input-group-append">
+                    <button type="submit" id="envoyer" class="btn btn-primary">Envoyer</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</fieldset>
 </body>
 </html>

@@ -57,7 +57,7 @@ class TchatBdd
                 'mysql:host=' . $this->host . ';dbname=' . $this->dbname . ';charset=UTF8', $this->login, $this->password);
             //On définit le mode d'erreur de PDO sur Exception
             $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo 'Connecté';
+            /*echo 'Connecté';*/
         } /*On capture les exceptions si une exception est lancée et on affiche
              *les informations relatives à celle-ci*/
         catch (PDOException $e) {
