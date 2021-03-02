@@ -8,6 +8,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link href="./public/css/signin.css" rel="stylesheet">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sign-in/">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+
     <style>
         .bd-placeholder-img {
             font-size: 1.125rem;
@@ -26,14 +28,29 @@
 
 </head>
 <body class="text-center">
-
+<div class="collapse" id="navbarToggleExternalContent">
+    <div class="bg-dark p-4">
+        <h5 class="text-white h4">Tchat</h5>
+        <input class="btn btn-primary" value="Accueil">
+        <input class="btn btn-primary" value="connexion">
+    </div>
+</div>
+<nav class="navbar navbar-dark bg-dark">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    </div>
+</nav>
 <main class="form-signin">
     <form>
         <h1 class="h3 mb-3 fw-normal">Inscription</h1>
-        <label for="inputEmail" class="visually-hidden">Email address</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-        <label for="inputPassword" class="visually-hidden">Password</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+        <label for="inputEmail" class="visually-hidden">Email</label>
+        <input type="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+        <label for="inputNickname" class="visually-hidden">Pseudonyme</label>
+        <input type="text" id="inputNickname" name="inputNickname" class="form-control" placeholder="Pseudonyme" required autofocus>
+        <label for="inputPassword" class="visually-hidden">Mot de passe</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Mot de passe" required>
 
         <button class="w-100 btn btn-lg btn-primary" type="submit">s'insrire</button>
 
