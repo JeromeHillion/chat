@@ -18,7 +18,8 @@
             <?php foreach($tchatMessages as $tchatMessage):
             ?>
 
-            <p class="pseudo"><?= htmlspecialchars($tchatMessage['pseudo']); ?></p><cite class="message"><?= htmlspecialchars($tchatMessage['message']); ?></cite>
+            <p class="pseudo"><?= htmlspecialchars($tchatMessage['pseudo']).' '. htmlspecialchars($tchatMessage['dateConv']); ?>
+                <a href="./index.php?id=<?=$tchatMessage['id'];?>">x</a></p><cite class="message"><?= htmlspecialchars($tchatMessage['message']); ?></cite>
 
 
         <?php endforeach; ?>

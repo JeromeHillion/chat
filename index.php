@@ -1,6 +1,7 @@
 <?php
 require './controller/indexController.php';
 
-$tchatMessages = showMessage();
+$tchatMessages = readMessage();
+/*$message = deleteMessage();*/
 
 require 'views/index.phtml';
