@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>chat</title>
-    <link rel="stylesheet" href="./views/css/style.css">
+    <link rel="stylesheet" href="./public/css/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
 </head>
@@ -15,10 +15,10 @@
        <!--Les messages ici-->
 
         <div class="box">
-            <?php foreach($resultats as $resultat):
+            <?php foreach($tchatMessages as $tchatMessage):
             ?>
 
-            <p class="pseudo"><?= htmlspecialchars($resultat['pseudo']); ?></p><cite class="message"><?= htmlspecialchars($resultat['message']); ?></cite>
+            <p class="pseudo"><?= htmlspecialchars($tchatMessage['pseudo']); ?></p><cite class="message"><?= htmlspecialchars($tchatMessage['message']); ?></cite>
 
 
         <?php endforeach; ?>
