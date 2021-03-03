@@ -14,17 +14,17 @@ if(!isset($_SESSION['user'])){
 
 }*/
 
-/*if ($_POST) {
-    $nickname = $_POST['nickname'];
+if ($_POST) {
+    $nickname = $_SESSION['user']['nickname'];
     $message = $_POST['message'];
-    addMessage($nickname,$message);
+    addMessage($message);
 }
-
+/*
 
 if ($_GET) {
     return deleteMessage();
 }
-
-$tchatMessages = readMessage();*/
+*/
+$tchatMessages = readMessage();
 
 require 'views/index.phtml';

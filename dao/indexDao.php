@@ -1,12 +1,12 @@
 <?php
 require './model/TchatBdd.php';
-function addMessage($nickname, $message){
+function addMessage($message){
     $db = new TchatBdd();
 
     $chat_db = $db->dbConnexion();
 
-        $sql = $chat_db->prepare("INSERT INTO chat(pseudo, message) VALUES (?,?)");
-        $sql->execute([$nickname, $message]);
+        $sql = $chat_db->prepare("INSERT INTO chat(message)  VALUES (?)");
+        $sql->execute([$message]);
         /*echo "Entrée ajoutée dans la table";*/
 
     //return $sql;
@@ -18,9 +18,9 @@ function readMessage(){
     $chat_db = $db->dbConnexion();
     /*Sélectionne les valeurs dans les colonnes prenom et mail de la table
                     *users pour chaque entrée de la table*/
-    $sql= $chat_db ->prepare("SELECT id, pseudo, message,
-       DATE_FORMAT(chatDate,'%H:%i:%s') as dateConv 
-       FROM chat");
+    $sql= $chat_db ->prepare("SELECT user.id, user.nickname, message, user.Created_at FROM chat INNER JOIN user ON chat.user_id = user.id ORDER BY Created_at"
+
+    );
     $sql->execute();
 
     /*Retourne un tableau associatif pour chaque entrée de notre table
