@@ -15,12 +15,14 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <ul class="nav justify-content-end">
+            <?php if($_SESSION): ?>
             <li class="nav-item pe-2">
-                <a class="btn btn-light" aria-current="page" href="#">Connexion</a>
+                <a class="btn btn-light" aria-current="page" href="#"><?=var_dump($_SESSION) ?></a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-light" href="./register.php">Inscription</a>
+                <a class="btn btn-light" href="#">déconnexion</a>
 a             </li>
+            <?php endif;?>
         </ul>
     </div>
 </nav>
