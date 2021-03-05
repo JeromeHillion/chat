@@ -1,0 +1,24 @@
+<div class="row">
+<div class="col-3 bg-light">
+    <img src="https://placeimg.com/100/100/any" alt="image" class="card">
+    <h3>Pseudo : <?= $_SESSION["user"]["nickname"] ?></h3>
+    <h3>Email : <?= $infosUser['email'] ?></h3>
+    <h3>Dernière connexion : <?= $infosUser['last_login'] ?></h3>
+</div>
+    <fieldset class=" col shadow-sm mt-5">
+        <main class="form-signin bg-white">
+            <form action="./register.php" method="post">
+                <h1 class="h3 mb-3 fw-normal">Inscription</h1>
+                <label for="inputEmail" class="visually-hidden">Email</label>
+                <input type="email" id="inputEmail" class="form-control" name="email" placeholder="Email" required autofocus>
+                <label for="inputNickname" class="visually-hidden">Pseudonyme</label>
+                <input type="text" id="inputNickname" name="nickname" class="form-control" placeholder="Pseudonyme" required autofocus>
+                <label for="inputPassword" class="visually-hidden">Mot de passe</label>
+                <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Mot de passe" required>
+
+                <button class="w-100 btn btn-lg btn-primary" type="submit">s'insrire</button>
+
+            </form>
+        </main>
+    </fieldset>
+</div>

@@ -9,4 +9,5 @@ if (isset($_POST) && !empty($_POST['email'])  && !empty($_POST['password'])){
 
 }
 
-require './views/login.phtml';
+$template= 'login.phtml';
+require 'views/layout.phtml';

@@ -9,4 +9,5 @@ if ($_POST){
 }
 
 
-require './views/register.phtml';
+$template= 'register.phtml';
+require 'views/layout.phtml';

@@ -33,7 +33,11 @@ function addUser(string $email, string $nickname, string $password)
         $user->getEmail(),
         $user->getNickname(),
         $user->getPassword(),
+
+
     ]);
+    header('Location: ./login.php');
+    exit();
 }
     function verifPassword($pass, $pass_hach): bool
     {
@@ -103,7 +107,7 @@ function addUser(string $email, string $nickname, string $password)
         //préparer la requète
         $sql = $bdd_connexion->prepare('
 UPDATE user SET Last_login = NOW() 
-WHERE Id = ?');
+WHERE id = ?');
 
         //executer la requete
         $sql->execute([$_SESSION['user']['id']]);

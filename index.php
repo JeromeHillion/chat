@@ -1,9 +1,8 @@
 <?php
-require './dao/indexDao.php';
-
-
 //On démmarre la session
 session_start();
+require './dao/indexDao.php';
+
 
 //Si il n'y a pas de session active on redirige vers la page de login
 if(!isset($_SESSION['user'])){
@@ -15,16 +14,16 @@ if(!isset($_SESSION['user'])){
 }*/
 
 if ($_POST) {
-    $nickname = $_SESSION['user']['nickname'];
+    $user_id= $_SESSION['user']['id'];
     $message = $_POST['message'];
-    addMessage($message);
+    addMessage($user_id,$message);
 }
-/*
 
 if ($_GET) {
-    return deleteMessage();
+    deleteMessage();
 }
-*/
+
 $tchatMessages = readMessage();
 
-require 'views/index.phtml';
+$template= 'index.phtml';
+require 'views/layout.phtml';

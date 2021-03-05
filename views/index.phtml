@@ -1,60 +1,41 @@
-<!doctype html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>chat</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
-    <link href="./public/css/style.css" rel="stylesheet">
-</head>
-<body>
-<nav class="navbar navbar-expand-lg  navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#">Tchat</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <ul class="nav justify-content-end">
-            <?php if($_SESSION): ?>
-            <li class="nav-item pe-2">
-                <a class="btn btn-light" aria-current="page" href="#"><?=$_SESSION["user"]["nickname"] ?></a>
-            </li>
-            <li class="nav-item">
-                <a class="btn btn-light" href="./logout.php">déconnexion</a>
-a             </li>
-            <?php endif;?>
-        </ul>
-    </div>
-</nav>
-<fieldset>
-    <h1 class="h3 mb-3 font-weight-normal" >Chat Box</span></h1>
-    <div class="tchatBox">
-       <!--Les messages ici-->
-
-        <div id="conversation">
-            <?php foreach($tchatMessages as $tchatMessage):
-            ?>
-
-                <span class="badge bg-primary m"><?= $tchatMessage['']?></span> <span><?=  htmlspecialchars($tchatMessage['dateConv']); ?><a href="./index.php?id=<?= $tchatMessage['id'];?>" class="badge bg-danger float-end">x</a> </span>
-            <p><?= htmlspecialchars($tchatMessage['message']); ?></p>
+<fieldset class="border">
+    <h2 class="fs-6 text bg-primary bg-gradient text-white text-start p-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-left"
+             viewBox="0 0 16 16">
+            <path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+        </svg>
+        chat
+    </h2>
 
 
+    <?php foreach ($tchatMessages
 
+                   as $tchatMessage):
+        ?>
+        <div class="tchat-box border rounded" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto text-dark"><?= $_SESSION['user']['nickname'] ?></strong>
+                <small>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                         class="bi bi-stopwatch" viewBox="0 0 16 16">
+                        <path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
+                        <path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
+                    </svg><?= htmlspecialchars($tchatMessage['dateMessage']) ?></small>
+                <a href="./index.php?id=<?= $tchatMessage['id']; ?>" type="button" class="btn-close"
+                   data-bs-dismiss="toast" aria-label="Close"></a>
 
-        <?php endforeach; ?>
-
-        </div>
-    </div>
-    <div class="input-group">
-        <form id="chatform" action="./index.php" method="post">
-            <div class="input-group">
-                <input type="text" id="message" name="message" placeholder="message" class="form-control" required>
-                <div class="input-group-append">
-                    <button type="submit" id="envoyer" class="btn btn-primary">Envoyer</button>
-                </div>
             </div>
-        </form>
-    </div>
+            <div class="toast-body text-start text-secondary">
+                <?= htmlspecialchars($tchatMessage['message']); ?>
+            </div>
+        </div>
+        <br>
+    <?php endforeach; ?>
+    <form action="./index.php" method="post" class=" p-2 bg-light">
+        <div class="input-group mb-3">
+            <input type="text" id="message" name="message" class="form-control fs-6" placeholder="message..."
+                   aria-label="Recipient's username" aria-describedby="button-addon2">
+            <input class="btn btn-warning btn-sm" type="submit" id="button-addon2" value="envoyer">
+        </div>
+    </form>
 </fieldset>
-</body>
-</html>
